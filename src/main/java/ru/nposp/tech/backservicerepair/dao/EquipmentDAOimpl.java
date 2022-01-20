@@ -30,12 +30,15 @@ public class EquipmentDAOimpl implements EquipmentDAO{
 
     @Override
     public Equipment getEquipment(final int id) {
-        return null;
+        Equipment equipment = entityManager.find(Equipment.class, id);
+        return equipment;
     }
 
     @Override
     public void deleteEquipment(final int id) {
-
+        Query query = (Query) entityManager.createQuery("delete from Equipment where id = :equipID");
+        query.setParameter("equipID", id);
+        query.executeUpdate();
     }
 
     @Override

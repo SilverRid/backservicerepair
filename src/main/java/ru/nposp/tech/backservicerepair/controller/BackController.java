@@ -3,7 +3,9 @@ package ru.nposp.tech.backservicerepair.controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +36,15 @@ public class BackController {
     @PostMapping("/eqs")
     public Equipment saveEquipment(@RequestBody Equipment equipment) {
         equipmentService.saveEquipment(equipment);
-        return  equipment;
+        return equipment;
+    }
+    @GetMapping("/eqs/{id}")
+    public Equipment getEquipment(@PathVariable int id) {
+        return equipmentService.getEquipment(id);
+    }
+    @DeleteMapping("/eqs/{id}")
+    public String deleteEquipment(@PathVariable int id) {
+        equipmentService.deleteEquipment(id);
+        return "Equipment with ID = " + id + " is deleted";
     }
 }

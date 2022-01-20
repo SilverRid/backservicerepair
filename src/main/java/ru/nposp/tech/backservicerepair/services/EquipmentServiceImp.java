@@ -27,13 +27,14 @@ public class EquipmentServiceImp implements EquipmentService{
     @Override
     @Transactional
     public Equipment getEquipment(final int id) {
-        return null;
+        Equipment equipment = equipmentDAO.getEquipment(id);
+        return equipment;
     }
 
     @Override
     @Transactional
     public void deleteEquipment(final int id) {
-
+        equipmentDAO.deleteEquipment(id);
     }
 
     @Override
