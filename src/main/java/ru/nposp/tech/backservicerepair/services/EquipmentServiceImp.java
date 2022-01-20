@@ -39,6 +39,6 @@ public class EquipmentServiceImp implements EquipmentService{
     @Override
     @Transactional
     public void saveEquipment(final Equipment equipment) {
-
+        equipmentDAO.saveEquipment(equipment);
     }
 }
