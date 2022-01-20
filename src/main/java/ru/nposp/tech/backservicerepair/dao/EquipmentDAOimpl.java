@@ -23,7 +23,7 @@ public class EquipmentDAOimpl implements EquipmentDAO{
     public List<Equipment> getAllEquipment() {
         Session session = entityManager.unwrap(Session.class);
 
-        Query<Equipment> query = session.createQuery("from Equipment", Equipment.class);
+        Query query = session.createQuery("from Equipment");
         List<Equipment> allEquipment = query.getResultList();
         return allEquipment;
     }
@@ -40,6 +40,7 @@ public class EquipmentDAOimpl implements EquipmentDAO{
 
     @Override
     public void saveEquipment(final Equipment equipment) {
-
+        Equipment neweq = entityManager.merge(equipment);
+        equipment.setId(neweq.getId());
     }
 }
