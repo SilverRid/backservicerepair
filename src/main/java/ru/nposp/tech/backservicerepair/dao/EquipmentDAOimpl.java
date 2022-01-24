@@ -45,5 +45,6 @@ public class EquipmentDAOimpl implements EquipmentDAO{
     public void saveEquipment(final Equipment equipment) {
         Equipment neweq = entityManager.merge(equipment);
         equipment.setId(neweq.getId());
+        equipment.getCompany().setId(equipment.getCompany().getId());
     }
 }

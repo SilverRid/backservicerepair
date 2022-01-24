@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,34 +23,44 @@ import lombok.Setter;
 @Table(name = "equipment")
 public class Equipment {
 
-
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "equipment_sq", sequenceName = "equipment_sq", initialValue = 19, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "equipment_sq")
     @Column(name = "id")
-    private int id;
-//
-//    @Column(name = "companyname")
-//    private String companyName;
+    private @Getter
+    @Setter
+    int id;
 
     @Column(name = "eqname")
-    private @Getter @Setter
+    private @Getter
+    @Setter
     String eqName;
 
     @Column(name = "partnumber")
-    private @Getter @Setter String partNumber;
+    private @Getter
+    @Setter
+    String partNumber;
 
     @Column(name = "serialnumber")
-    private @Getter @Setter int serialNumber;
+    private @Getter
+    @Setter
+    int serialNumber;
 
     @Column(name = "malfunction")
-    private @Getter @Setter String malfunction;
+    private @Getter
+    @Setter
+    String malfunction;
 
     @Column(name = "statusrepair")
-    private @Getter @Setter String statusRepair;
+    private @Getter
+    @Setter
+    String statusRepair;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "company_id")
-    private @Getter @Setter Company company;
+    private @Getter
+    @Setter
+    Company company;
 
     public Equipment() {
     }
@@ -64,15 +75,6 @@ public class Equipment {
         this.malfunction = malfuntion;
         this.statusRepair = statusRepair;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(final int id) {
-        this.id = id;
-    }
-
 
     @Override
     public String toString() {
