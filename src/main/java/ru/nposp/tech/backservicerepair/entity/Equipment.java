@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 /*****
 
@@ -30,31 +32,24 @@ public class Equipment {
 //    private String companyName;
 
     @Column(name = "eqname")
-    private String eqName;
+    private @Getter @Setter
+    String eqName;
 
     @Column(name = "partnumber")
-    private String partNumber;
+    private @Getter @Setter String partNumber;
 
     @Column(name = "serialnumber")
-    private int serialNumber;
+    private @Getter @Setter int serialNumber;
 
     @Column(name = "malfunction")
-    private String malfunction;
+    private @Getter @Setter String malfunction;
 
     @Column(name = "statusrepair")
-    private String statusRepair;
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(final Company company) {
-        this.company = company;
-    }
+    private @Getter @Setter String statusRepair;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "company_id")
-    private Company company;
+    private @Getter @Setter Company company;
 
     public Equipment() {
     }
@@ -62,7 +57,7 @@ public class Equipment {
     public Equipment(final String eqName, final String partNumber, final int serialNumber,
                      final String malfuntion,
                      final String statusRepair) {
-//        this.companyName = companyName;
+
         this.eqName = eqName;
         this.partNumber = partNumber;
         this.serialNumber = serialNumber;
@@ -78,53 +73,6 @@ public class Equipment {
         this.id = id;
     }
 
-//    public String getCompanyName() {
-//        return companyName;
-//    }
-//
-//    public void setCompanyName(final String companyName) {
-//        this.companyName = companyName;
-//    }
-
-    public String getEqName() {
-        return eqName;
-    }
-
-    public void setEqName(final String eqName) {
-        this.eqName = eqName;
-    }
-
-    public String getPartNumber() {
-        return partNumber;
-    }
-
-    public void setPartNumber(final String partNumber) {
-        this.partNumber = partNumber;
-    }
-
-    public int getSerialNumber() {
-        return serialNumber;
-    }
-
-    public void setSerialNumber(final int serialNumber) {
-        this.serialNumber = serialNumber;
-    }
-
-    public String getMalfuntion() {
-        return malfunction;
-    }
-
-    public void setMalfuntion(final String malfuntion) {
-        this.malfunction = malfuntion;
-    }
-
-    public String getStatusRepair() {
-        return statusRepair;
-    }
-
-    public void setStatusRepair(final String statusRepair) {
-        this.statusRepair = statusRepair;
-    }
 
     @Override
     public String toString() {

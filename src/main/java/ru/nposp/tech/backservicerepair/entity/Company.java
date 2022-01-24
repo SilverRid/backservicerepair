@@ -31,10 +31,6 @@ public class Company {
     @Column(name = "address")
     private @Getter @Setter String address;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "equipment_id")
-//    private Equipment equipment;
-
     public Company() {
     }
 
