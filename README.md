@@ -1,4 +1,3 @@
-# backservicerepair
+# Backservice repair equipment
 
-repair of high-tech equipment (back)
-1
+repair of high-tech equipment (back, json)
