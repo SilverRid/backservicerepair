@@ -36,6 +36,7 @@ public class BackController {
     @PostMapping("/eqs")
     public Equipment saveEquipment(@RequestBody Equipment equipment) {
         equipmentService.saveEquipment(equipment);
+        System.out.println(equipment.getCompany());
         return equipment;
     }
     @GetMapping("/eqs/{id}")
